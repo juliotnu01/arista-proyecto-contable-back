@@ -7,6 +7,7 @@ import { PeriodoModule } from './periodo/periodo.module';
 import { TipoDocumentoModule } from './tipo_documento/tipo_documento.module';
 import { PucModule } from './puc/puc.module';
 import { TercerosModule } from './terceros/terceros.module';
+import { CentroDeCostoModule } from './centro-de-costo/centro-de-costo.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { TercerosModule } from './terceros/terceros.module';
     TipoDocumentoModule,
     PucModule,
     TercerosModule,
+    CentroDeCostoModule,
   ],
 })
 export class AppModule {}
