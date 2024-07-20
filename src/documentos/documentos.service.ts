@@ -12,7 +12,8 @@ export class DocumentosService {
   constructor(@InjectRepository(Documento) private readonly documentoRepository: Repository<Documento>) {}
 
   create(createDocumentoDto: CreateDocumentoDto) {
-    return 'This action adds a new documento';
+    const documento = this.documentoRepository.create(createDocumentoDto);
+    return this.documentoRepository.save(documento);
   }
 
   findAll(): Promise<Documento[]> {
@@ -23,11 +24,16 @@ export class DocumentosService {
     return `This action returns a #${id} documento`;
   }
 
-  update(id: number, updateDocumentoDto: UpdateDocumentoDto) {
-    return `This action updates a #${id} documento`;
+  async update(id: number, updateDocumentoDto: UpdateDocumentoDto) {
+    const documento = await this.documentoRepository.findOneBy({ docu_id: id });
+    if (!documento) {
+      throw new Error('Documento no encontrado');
+    }
+    this.documentoRepository.merge(documento, updateDocumentoDto);
+    return this.documentoRepository.save(documento);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} documento`;
+    return `This action removes a #${id} documento`; 
   }
 }

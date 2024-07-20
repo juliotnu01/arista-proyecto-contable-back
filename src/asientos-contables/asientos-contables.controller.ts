@@ -1,15 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { AsientosContablesService } from './asientos-contables.service';
-import { CreateAsientosContableDto } from './dto/create-asientos-contable.dto';
-import { UpdateAsientosContableDto } from './dto/update-asientos-contable.dto';
+import { CreateAsientoContableDto } from './dto/create-asientos-contable.dto';
+import { UpdateAsientoContableDto } from './dto/update-asientos-contable.dto';
 
 @Controller('asientos-contables')
 export class AsientosContablesController {
   constructor(private readonly asientosContablesService: AsientosContablesService) {}
 
   @Post()
-  create(@Body() createAsientosContableDto: CreateAsientosContableDto) {
-    return this.asientosContablesService.create(createAsientosContableDto);
+  create(@Body() CreateAsientoContableDto: CreateAsientoContableDto) {
+    return this.asientosContablesService.create(CreateAsientoContableDto);
   }
 
   @Get()
@@ -22,9 +22,9 @@ export class AsientosContablesController {
     return this.asientosContablesService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAsientosContableDto: UpdateAsientosContableDto) {
-    return this.asientosContablesService.update(+id, updateAsientosContableDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() UpdateAsientoContableDto: UpdateAsientoContableDto) {
+    return this.asientosContablesService.update(+id, UpdateAsientoContableDto);
   }
 
   @Delete(':id')
