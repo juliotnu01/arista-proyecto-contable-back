@@ -16,7 +16,7 @@ export class DocumentosService {
   }
 
   findAll(): Promise<Documento[]> {
-    return this.documentoRepository.find({relations: ['asientos_contables']});
+    return this.documentoRepository.find({relations: ['asientos_contables', 'periodo', 'tipoDocummento']});
   }
 
   findOne(id: number) {
