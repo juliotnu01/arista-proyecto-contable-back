@@ -6,6 +6,7 @@ import { AsientosContablesModule } from './asientos-contables/asientos-contables
 import { PeriodoModule } from './periodo/periodo.module';
 import { TipoDocumentoModule } from './tipo_documento/tipo_documento.module';
 import { PucModule } from './puc/puc.module';
+import { TercerosModule } from './terceros/terceros.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PucModule } from './puc/puc.module';
     PeriodoModule,
     TipoDocumentoModule,
     PucModule,
+    TercerosModule,
   ],
 })
 export class AppModule {}
