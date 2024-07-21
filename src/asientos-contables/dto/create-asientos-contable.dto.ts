@@ -2,8 +2,9 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateAsientoContableDto {
   @IsNumber()
+  @IsOptional()
   @IsNotEmpty()
-  docu_id: number;
+  docu_id?: number;
 
   @IsNumber()
   @IsNotEmpty()
