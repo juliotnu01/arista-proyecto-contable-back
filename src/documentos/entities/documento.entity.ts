@@ -12,8 +12,11 @@ export class Documento {
   @Column()
   tido_id: number;
 
+  @Column({ nullable: true })
+  peri_id: number;
+
   @ManyToOne(() => Periodo)
-  @JoinColumn({ name: 'peri_id' })
+  @JoinColumn({ name: 'peri_id' }) 
   periodo: Periodo;
 
   @ManyToOne(() => TipoDocumento)

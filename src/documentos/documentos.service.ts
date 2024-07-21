@@ -5,11 +5,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Documento } from './entities/documento.entity';
 
-
 @Injectable()
 export class DocumentosService {
-
-  constructor(@InjectRepository(Documento) private readonly documentoRepository: Repository<Documento>) {}
+  constructor(
+    @InjectRepository(Documento)
+    private readonly documentoRepository: Repository<Documento>,
+  ) {}
 
   create(createDocumentoDto: CreateDocumentoDto) {
     const documento = this.documentoRepository.create(createDocumentoDto);
@@ -17,7 +18,9 @@ export class DocumentosService {
   }
 
   findAll(): Promise<Documento[]> {
-    return this.documentoRepository.find({relations: ['asientos_contables', 'periodo', 'tipoDocummento']});
+    return this.documentoRepository.find({
+      relations: ['asientos_contables', 'periodo', 'tipoDocummento'],
+    });
   }
 
   findOne(id: number) {
@@ -29,11 +32,12 @@ export class DocumentosService {
     if (!documento) {
       throw new Error('Documento no encontrado');
     }
+
     this.documentoRepository.merge(documento, updateDocumentoDto);
     return this.documentoRepository.save(documento);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} documento`; 
+    return `This action removes a #${id} documento`;
   }
 }

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, IsDate, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 export class CreateDocumentoDto {
   @IsNumber()
@@ -13,10 +13,9 @@ export class CreateDocumentoDto {
   @IsNotEmpty()
   docu_nume: string;
 
-  @IsDate()
-  @Type(() => Date) // Asegura que se convierta a una instancia de Date
+  @IsString()
   @IsNotEmpty()
-  docu_fech: Date;
+  docu_fech: string;
 
   @IsNumber()
   @IsOptional()

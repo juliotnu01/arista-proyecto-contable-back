@@ -18,13 +18,13 @@ export class DocumentosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.documentosService.findOne(+id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateDocumentoDto: UpdateDocumentoDto) {
-    return this.documentosService.update(+id, updateDocumentoDto); 
+  update(@Param('id') id: number, @Body() updateDocumentoDto: UpdateDocumentoDto) {
+    return this.documentosService.update(id, updateDocumentoDto); 
   }
 
   @Delete(':id')
